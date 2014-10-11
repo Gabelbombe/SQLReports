@@ -1,0 +1,8 @@
+{
+    "name": "ehime/sqlreports",
+    "type": "magento-module",
+    "description": "Create magento reports based off MySQL queries",
+    "require": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}
