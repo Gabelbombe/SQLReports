@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <menu>
+        <foodhub translate="title'">
+            <children>
+                <ehime>
+                    <title>Market Reports</title>
+                    <sort_order>0</sort_order>
+                    <action>adminhtml/adminhtml_report</action>
+                </ehime>
+            </children>
+        </foodhub>
+    </menu>
+
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <foodhub>
+                        <children>
+                            <ehime translate="title">
+                                <title>Market Reports (SQL)</title>
+                                <children>
+                                    <edit translate="title">
+                                        <title>Add/Edit Reports (DANGEROUS)</title>
+                                        <sort_order>10</sort_order>
+                                    </edit>
+                                </children>
+                            </ehime>
+                        </children>
+                    </foodhub>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

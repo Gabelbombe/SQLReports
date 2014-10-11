@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Ehimeprefecture_Reports>
+            <version>0.1.2</version>
+        </Ehimeprefecture_Reports>
+    </modules>
+
+    <global>
+        <blocks>
+            <ehime>
+                <class>Ehimeprefecture_Reports_Block</class>
+            </ehime>
+        </blocks>
+        <helpers>
+            <ehime>
+                <class>Ehimeprefecture_Reports_Helper</class>
+            </ehime>
+        </helpers>
+        <models>
+            <ehime>
+                <class>Ehimeprefecture_Reports_Model</class>
+                <resourceModel>ehime_mysql4</resourceModel>
+            </ehime>
+            <ehime_mysql4>
+                <class>Ehimeprefecture_Reports_Model_Mysql4</class>
+                <entities>
+                    <report>
+                        <table>ehime_report</table>
+                    </report>
+                </entities>
+            </ehime_mysql4>
+        </models>
+
+        <resources>
+            <Ehimeprefecture_Reports>
+                <setup>
+                    <module>Ehimeprefecture_Reports</module>
+                    <class>Mage_Core_Model_Resource_Setup</class>
+                </setup>
+            </Ehimeprefecture_Reports>
+        </resources>
+    </global>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <admin_ehime before="Mage_Adminhtml">Ehimeprefecture_Reports</admin_ehime>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <ehime>
+                    <file>ehimeprefecture_reports/ehime.xml</file>
+                </ehime>
+            </updates>
+        </layout>
+    </adminhtml>
+
+    <default>
+        <reports>
+            <ehime>
+                <max_reports_in_menu>15</max_reports_in_menu>
+            </ehime>
+        </reports>
+    </default>
+</config>
