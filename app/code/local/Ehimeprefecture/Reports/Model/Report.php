@@ -13,7 +13,7 @@
  * @method getChartConfig() ~ Not exist
  * @method Ehimeprefecture_Reports_Model_Report setChartConfig($value)
  */
-class Ehimeprefecture_Reports_Model_Report extends Mage_Core_Model_Abstract
+Class Ehimeprefecture_Reports_Model_Report Extends Mage_Core_Model_Abstract
 {
     /**
      * @var Ehimeprefecture_Reports_Model_Report_GridConfig
