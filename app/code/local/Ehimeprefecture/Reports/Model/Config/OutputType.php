@@ -1,6 +1,8 @@
 <?php
 Class Ehimeprefecture_Reports_Model_Config_OutputType Extends Mage_Core_Model_Config_Data
 {
+    //REF: https://developers.google.com/chart/
+
     /**
      * Array to data table group
      */
