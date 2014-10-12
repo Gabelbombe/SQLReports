@@ -1,2 +1,4 @@
 app/code/local/Ehimeprefecture/Reports app/code/local/Ehimeprefecture/Reports
 app/etc/modules/Ehimeprefecture_Reports.xml app/etc/modules/Ehimeprefecture_Reports.xml
+app/design/adminhtml/base/default/layout/ehimeprefecture_reports app/design/adminhtml/base/default/layout/ehimeprefecture_reports
+app/design/adminhtml/base/default/template/ehimeprefecture_reports app/design/adminhtml/base/default/template/ehimeprefecture_reports
