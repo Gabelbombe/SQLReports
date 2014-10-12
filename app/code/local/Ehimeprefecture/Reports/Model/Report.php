@@ -75,7 +75,7 @@ Class Ehimeprefecture_Reports_Model_Report Extends Mage_Core_Model_Abstract
 
             if (! is_array($config)) $config = array(); // $config = [];
 
-            $this->gridConfig = Mage::getModel('ehime/reportgridConfig', $config);
+            $this->gridConfig = Mage::getModel('ehime/report_gridConfig', $config);
         }
 
         return $this->gridConfig;
