@@ -1,0 +1,80 @@
+<?php
+    /*
+     * @var $this Ehimeprefecture_Reports_Block_Adminhtml_Report_Chart
+     * @var $report Ehimeprefecture_Reports_Model_Report
+     */
+    $report = $this->_getReport();
+?>
+
+<?php
+    /*
+    * Protocol Relative urls,
+    * REF: https://developer.mozilla.org/en-US/docs/Security/MixedContent/How_to_fix_website_with_mixed_content
+    */
+?>
+<script type="text/javascript" src="//www.google.com/jsapi"></script>
+<script type="text/javascript">
+
+<?php
+    if ($report->getOutputType() == Ehimeprefecture_Reports_Model_Config_OutputType::TYPE_CALENDAR_CHART)
+    {
+        // REF: https://developers.google.com/chart/interactive/docs/gallery/calendar
+        echo 'google.load("visualization", "1.1", { packages:["calendar"] });';
+    }
+
+    elseif ($report->getOutputType() == Ehimeprefecture_Reports_Model_Config_OutputType::TYPE_GEO_CHART)
+    {
+        // REF: https://developers.google.com/chart/interactive/docs/gallery/geochart
+        echo 'google.load("visualization", "1.0", { packages: ["geochart"] });';
+    }
+
+    else
+    {
+        // REF: https://developers.google.com/chart/interactive/docs/basic_load_libs
+        echo 'google.load("visualization", "1.0", { packages: ["corechart"] });';
+    }
+?>
+google.setOnLoadCallback(function()
+{
+    <?php
+        /** new Ajax.Request('<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/adminhtml_report/getJson', ['report_id' => $report->getId()]) ?>', */
+    ?>
+
+    new Ajax.Request('<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/adminhtml_report/getJson', array('report_id' => $report->getId())) ?>',
+            {
+        method:'get',
+        onSuccess: function(transport)
+        {
+            var jsonData = transport.responseText.evalJSON();
+
+            if (jsonData.error)
+            {
+                alert(jsonData.error)
+            }
+
+            else
+            {
+                <?php
+                    echo ($report->getOutputType() == Ehimeprefecture_Reports_Model_Config_OutputType::TYPE_CALENDAR_CHART)
+                        ? 'var data = new google.visualization.DataTable();
+                            data.addColumn({ type: "date",   id: "Date" });
+                            data.addColumn({ type: "number", id: "Test" });
+
+                            for (var i in jsonData) {
+                                jsonData[i][0] = new Date(jsonData[i][0] * 1000);
+                            }
+                            data.addRows(jsonData);'
+                        : 'var data = google.visualization.arrayToDataTable(jsonData);';
+                ?>
+
+                var chart = new google.visualization.<?php echo $report->getOutputType(); ?>(document.getElementById('<?php echo $report->getChartDiv(); ?>'));
+                chart.draw(data, <?php echo $report->getChartConfig() ? $report->getChartConfig() : '{}'; ?>);
+            }
+        }
+    });
+});
+</script>
+
+<div id="<?php echo $report->getChartDiv(); ?>"></div>
+
+
