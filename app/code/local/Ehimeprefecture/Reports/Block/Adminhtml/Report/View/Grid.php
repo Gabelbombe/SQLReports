@@ -110,7 +110,8 @@ Class Ehimeprefecture_Reports_Block_Adminhtml_Report_View_Grid Extends Mage_Admi
                     $isFilterable = $filterable[$key];
                 }
 
-                elseif (in_array($key, $filterable)) {
+                elseif (in_array($key, $filterable))
+                {
                     $isFilterable = 'adminhtml/widget_grid_column_filter_text';
                 }
 
