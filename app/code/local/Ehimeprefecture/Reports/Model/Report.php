@@ -23,7 +23,6 @@ Class Ehimeprefecture_Reports_Model_Report Extends Mage_Core_Model_Abstract
     public function _construct()
     {
         parent::_construct();
-
         $this->_init('ehime/report');
     }
 
@@ -36,7 +35,6 @@ Class Ehimeprefecture_Reports_Model_Report Extends Mage_Core_Model_Abstract
     {
         $connection = Mage::helper('ehime')->getDefaultConnection();
         $collection = Mage::getModel('ehime/reportCollection', $connection);
-
         $collection->getSelect()->from(New Zend_Db_Expr('(' . $this->getData('sql_query') . ')'));
 
         return $collection;

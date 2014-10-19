@@ -10,10 +10,10 @@ Class Ehimeprefecture_Reports_Block_Adminhtml_Page_Menu Extends Mage_Adminhtml_B
     {
         $menuArray = $this->_buildMenuArray();
 
-        if (isset($menuArray['report']) && isset($menuArray['report']['children'])
-        &&  isset($menuArray['report']['children']['ehime']))
+        if (isset($menuArray['foodhub']) && isset($menuArray['foodhub']['children'])
+        &&  isset($menuArray['foodhub']['children']['ehime']))
         {
-            $this->_appendEhimeprefectureReports($menuArray['report']['children']['ehime']);
+            $this->_appendEhimeprefectureReports($menuArray['foodhub']['children']['ehime']);
         }
 
         return $menuArray;
@@ -26,7 +26,7 @@ Class Ehimeprefecture_Reports_Block_Adminhtml_Page_Menu Extends Mage_Adminhtml_B
     {
         if (! isset($menuArray['children'])) $menuArray['children'] = array(); // $menuArray['children'] = [];
 
-        $maxReports       = (int)Mage::getStoreConfig('reports/ehime/max_reports_in_menu');
+        $maxReports       = (int) Mage::getStoreConfig('reports/ehime/max_reports_in_menu');
         $reportCollection = Mage::getModel('ehime/report')->getCollection()->setOrder('title', 'ASC');
         $reportCount      = $reportCollection->count();
         $i                = 1;
