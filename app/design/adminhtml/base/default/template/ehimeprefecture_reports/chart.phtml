@@ -75,6 +75,10 @@ google.setOnLoadCallback(function()
 });
 </script>
 
+<script type="text/javascript">
+    <?php echo $report->getJavascriptConfig() ? $report->getJavascriptConfig() : "// ....\n"; ?>
+</script>
+
 <div id="<?php echo $report->getChartDiv(); ?>"></div>
 
 

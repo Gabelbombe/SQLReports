@@ -1,5 +1,5 @@
 <?php
-Class Ehimeprefecture_Reports_Block_Adminhtml_Report_Chart Extends Mage_Adminhtml_Block_Template
+Class Ehimeprefecture_Reports_Block_Adminhtml_Report_Javascript Extends Mage_Adminhtml_Block_Template
 {
     protected $_template = 'ehimeprefecture_reports/chart.phtml';
 
@@ -15,6 +15,6 @@ Class Ehimeprefecture_Reports_Block_Adminhtml_Report_Chart Extends Mage_Adminhtm
     {
         $report = $this->_getReport();
 
-        return $report->getChartConfig();
+        return $report->getJavascriptConfig();
     }
 }

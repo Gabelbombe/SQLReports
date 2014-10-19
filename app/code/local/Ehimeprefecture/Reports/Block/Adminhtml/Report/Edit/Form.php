@@ -115,5 +115,17 @@ Class Ehimeprefecture_Reports_Block_Adminhtml_Report_Edit_Form Extends Mage_Admi
             'label'     => Mage::helper('core')->__('Grid Configuration'),
             'style'     => 'width: 640px; height: 200px;'
         ));
+
+        //$fieldset->addField('javascript_config', 'textarea', [
+        //    'name'      => 'report[javascript_config]',
+        //    'label'     => Mage::helper('core')->__('Javascript Configuration'),
+        //    'style'     => 'width: 640px; height: 200px;'
+        //]);
+
+        $fieldset->addField('javascript_config', 'textarea', array(
+            'name'      => 'report[javascript_config]',
+            'label'     => Mage::helper('core')->__('Javascript Configuration'),
+            'style'     => 'width: 640px; height: 200px;'
+        ));
     }
 }
