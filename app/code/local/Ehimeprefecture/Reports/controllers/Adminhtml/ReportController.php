@@ -12,7 +12,7 @@ Class Ehimeprefecture_Reports_Adminhtml_ReportController Extends Mage_Adminhtml_
 
     public function indexAction()
     {
-        $this->loadLayout()->renderLayout();
+        $this->_render();
     }
 
     public function newAction()
@@ -24,24 +24,21 @@ Class Ehimeprefecture_Reports_Adminhtml_ReportController Extends Mage_Adminhtml_
     {
         Mage::register('current_report', $this->_getReport());
         $this->_title($this->__("Edit: %s", $this->_getReport()->getTitle()));
-
-        $this->loadLayout()->renderLayout();
+        $this->_render();
     }
 
     public function viewtableAction()
     {
         Mage::register('current_report', $this->_getReport());
         $this->_title($this->_getReport()->getTitle());
-
-        $this->loadLayout()->renderLayout();
+        $this->_render();
     }
 
     public function viewchartAction()
     {
         Mage::register('current_report', $this->_getReport());
         $this->_title($this->_getReport()->getTitle());
-
-        $this->loadLayout()->renderLayout();
+        $this->_render();
     }
 
     public function saveAction()
@@ -161,5 +158,15 @@ Class Ehimeprefecture_Reports_Adminhtml_ReportController Extends Mage_Adminhtml_
         $helper = Mage::helper('ehime');
 
         return ($isView ? $helper->getAllowView() : $helper->getAllowEdit());
+    }
+
+    protected function _render($tab = false)
+    {
+        $this->loadLayout()
+             ->_setActiveMenu((! $tab) ? 'foodhub/ehime' : $tab)
+             ->_addBreadcrumb(Mage::helper('ehime')->__('Market Reports'), Mage::helper('ehime')->__('Market Reports'))
+             ->renderLayout();
+
+        return $this;
     }
 }
